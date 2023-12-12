@@ -1,3 +1,8 @@
+# nextjs-bff
+A Simple Next.js web application, with the Back-end For Front-end applied in pratice
+
+
+# About Next.js
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

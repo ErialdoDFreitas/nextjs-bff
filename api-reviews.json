@@ -1,0 +1,29 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "content": "Excelente produto",
+      "product_id": 1
+    },
+    {
+      "id": 2,
+      "content": "Muito satisfeito com a compra",
+      "product_id": 1
+    },
+    {
+      "id": 3,
+      "content": "Ótimo custo-benefício",
+      "product_id": 1
+    },
+    {
+      "id": 4,
+      "content": "Recomendo a todos",
+      "product_id": 1
+    },
+    {
+      "id": 5,
+      "content": "Produto de alta qualidade",
+      "product_id": 1
+    }
+  ]
+}
