@@ -1,5 +1,5 @@
 # nextjs-bff
-A Simple Next.js web application, with the Back-end For Front-end applied in pratice
+A Simple Next.js web application, with the Back-end For Front-end concept applied in pratice
 
 
 # About Next.js
