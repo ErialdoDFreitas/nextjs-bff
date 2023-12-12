@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-
+//Route Handling
 export async function GET() {
     try {
         console.log('GET PRODUCTS\n');
