@@ -2,13 +2,13 @@
   "reviews": [
     {
       "id": 1,
-      "content": "Excelente produto",
+      "content": "Excelente bom",
       "product_id": 1
     },
     {
       "id": 2,
       "content": "Muito satisfeito com a compra",
-      "product_id": 1
+      "product_id": 2
     },
     {
       "id": 3,
@@ -18,12 +18,22 @@
     {
       "id": 4,
       "content": "Recomendo a todos",
-      "product_id": 1
+      "product_id": 3
     },
     {
       "id": 5,
       "content": "Produto de alta qualidade",
-      "product_id": 1
+      "product_id": 4
+    },
+    {
+      "id": 6,
+      "content": "Produto razoável",
+      "product_id": 4
+    },
+    {
+      "id": 7,
+      "content": "Excelente produto",
+      "product_id": 5
     }
   ]
 }

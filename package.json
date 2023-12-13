@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "api-products": "json-server --watch api-products.json --port 8001 --delay 7000",
-    "api-reviews": "json-server --watch api-reviews.json --port 8002 --delay 7000"
+    "api-products": "json-server --watch api-products.json --port 8001 --delay 5000",
+    "api-reviews": "json-server --watch api-reviews.json --port 8002 --delay 1000"
   },
   "dependencies": {
     "next": "13.5",
