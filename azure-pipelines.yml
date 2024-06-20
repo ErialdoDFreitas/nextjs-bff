@@ -9,7 +9,7 @@ trigger:
 pr:
   branches:
     exclude:
-    - '*'
+    - '*'  # Desabilita builds automáticos em Pull Requests
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -22,8 +22,6 @@ jobs:
     vmImage: 'ubuntu-latest'
     # Se você tiver um agente self-hosted, descomente a linha abaixo e comente a linha acima
     # name: 'Self-hosted'
-  strategy:
-    parallel: 1  # Limita o paralelismo a 1
   steps:
   - task: NodeTool@0
     inputs:
@@ -38,7 +36,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy build output to artifact staging directory'
     inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)/build'  # Atualize o caminho para a pasta de saída do build
+      SourceFolder: '$(System.DefaultWorkingDirectory)/.next'  # Atualize o caminho para a pasta de saída do build
       Contents: '**/*'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
