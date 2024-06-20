@@ -7,37 +7,47 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+  # Se você tiver um agente self-hosted, descomente a linha abaixo e comente a linha acima
+  # name: 'Self-hosted'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'  # Atualize para a versão mais recente do Node.js
-  displayName: 'Install Node.js'
+jobs:
+- job: BuildAndDeploy
+  pool:
+    vmImage: 'ubuntu-latest'
+    # Se você tiver um agente self-hosted, descomente a linha abaixo e comente a linha acima
+    # name: 'Self-hosted'
+  strategy:
+    parallel: 1  # Limita o paralelismo a 1
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'  # Atualize para a versão mais recente do Node.js
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'
 
-- task: CopyFiles@2
-  displayName: 'Copy build output to artifact staging directory'
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/build'  # Atualize o caminho para a pasta de saída do build
-    Contents: '**/*'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: CopyFiles@2
+    displayName: 'Copy build output to artifact staging directory'
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)/build'  # Atualize o caminho para a pasta de saída do build
+      Contents: '**/*'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive build artifacts'
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
+  - task: ArchiveFiles@2
+    displayName: 'Archive build artifacts'
+    inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+      includeRootFolder: false
+      archiveType: zip
+      archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
