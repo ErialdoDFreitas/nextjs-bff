@@ -6,37 +6,26 @@
 trigger:
 - main
 
-pr:
-  branches:
-    exclude:
-    - '*'  # Desabilita builds automáticos em Pull Requests
-
 pool:
   vmImage: 'ubuntu-latest'
-  # Se você tiver um agente self-hosted, descomente a linha abaixo e comente a linha acima
-  # name: 'Self-hosted'
 
 jobs:
 - job: BuildAndDeploy
-  pool:
-    vmImage: 'ubuntu-latest'
-    # Se você tiver um agente self-hosted, descomente a linha abaixo e comente a linha acima
-    # name: 'Self-hosted'
   steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '14.x'  # Atualize para a versão mais recente do Node.js
+      versionSpec: '14.x'
     displayName: 'Install Node.js'
 
   - script: |
       npm install
       npm run build
-    displayName: 'npm install and build'
+    displayName: 'Install dependencies and build'
 
   - task: CopyFiles@2
     displayName: 'Copy build output to artifact staging directory'
     inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)/.next'  # Atualize o caminho para a pasta de saída do build
+      SourceFolder: '$(System.DefaultWorkingDirectory)/.next'
       Contents: '**/*'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
