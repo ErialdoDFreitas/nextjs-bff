@@ -1,3 +1,4 @@
+import { ProductDetail } from "@/app/components/ProductDetail";
 import { getProductWithReviews } from "@/app/queries/products.query";
 
 
@@ -7,15 +8,10 @@ async function ProductDetailPage({params}: {params: {productId: string}} ) {
 
     return (
         <div>
-            <h1>Product Datail Page</h1>
-            <div>
-                {product.name} - {product.price}
-                <ul>
-                    {reviews.map((review) => (
-                        <li key={review.id}> {review.content} </li>
-                    ))}
-                </ul>
-            </div>
+            <ProductDetail params={{
+                product: product,
+                reviews: reviews
+            }} />
         </div>
     );
 }
