@@ -1,0 +1,12 @@
+name: CI-CD
+on:
+  push:
+    branches: ["develop"]
+  workflow_dispatch:
+    
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exemplo
+        uses: echo "Hello World !!"
